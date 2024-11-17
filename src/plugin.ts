@@ -5,6 +5,7 @@ penpot.ui.open("Plugin Template", `?theme=${penpot.theme}`, {
 
 penpot.ui.onMessage<{ type: string; data: any }>((message) => {
   if (message.type === "create-text") {
+    // Example
     penpot.createText("Hello!");
   }
 });
