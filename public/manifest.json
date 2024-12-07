@@ -1,8 +1,8 @@
 {
-  "name": "Plugin Template",
+  "name": "3D Design Viewer",
   "code": "plugin.js",
   "icon": "/icon.png",
-  "description": "Plugin template with TS, WebComponents with Lit",
+  "description": "Visualize and export your designs in a 3D perspective",
   "permissions": [
     "content:read",
     "content:write",

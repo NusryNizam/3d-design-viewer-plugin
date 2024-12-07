@@ -1,7 +1,7 @@
 import { DragInput } from "./DragInput";
 import "./style.css";
 
-import { toPixelData, toBlob } from "html-to-image";
+import { toBlob } from "html-to-image";
 
 // get the current theme from the URL
 const searchParams = new URLSearchParams(window.location.search);

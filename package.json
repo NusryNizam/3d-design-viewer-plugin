@@ -1,8 +1,7 @@
 {
-  "name": "penpot-plugin-template",
-  "description": "Penpot plugin template with TypeScript, Lit with Vite",
-  "private": true,
-  "version": "0.0.0",
+  "name": "design-viewer-3d",
+  "description": "Visualize and export your designs in a 3d perspective",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite-live-preview",
@@ -11,9 +10,7 @@
   "dependencies": {
     "@penpot/plugin-styles": "1.0.0",
     "@penpot/plugin-types": "1.0.0",
-    "axios": "^1.7.7",
-    "html-to-image": "^1.11.11",
-    "lit": "^3.2.1"
+    "html-to-image": "^1.11.11"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

@@ -1,14 +1,11 @@
-penpot.ui.open("Plugin Template", `?theme=${penpot.theme}`, {
+import { Shape } from "@penpot/plugin-types";
+
+penpot.ui.open("3D Design Viewer", `?theme=${penpot.theme}`, {
   width: 880,
   height: 600,
 });
 
 penpot.ui.onMessage<{ type: string; data: any }>(async (message) => {
-  if (message.type === "create-text") {
-    // Example
-    penpot.createText("Hello!");
-  }
-
   if (message.type === "add") {
     if (message.data) {
       const imageData = await penpot.uploadMediaData(
@@ -45,22 +42,17 @@ penpot.on("themechange", (theme) => {
 penpot.on("selectionchange", () => {
   penpot.ui.sendMessage({
     type: "selection",
-    htmlData: penpot.generateMarkup(
-      penpot.selection.filter((e) => e.type === "board")
-    ),
-    cssData: penpot.generateStyle(
-      penpot.selection.filter((e) => e.type === "board")
-    ),
+    htmlData: penpot.generateMarkup(getSelectedBoards()),
+    cssData: penpot.generateStyle(getSelectedBoards()),
   });
 });
 
 penpot.ui.sendMessage({
   type: "selection",
-  data: penpot.selection.filter((e) => e.type === "board"),
-  htmlData: penpot.generateMarkup(
-    penpot.selection.filter((e) => e.type === "board")
-  ),
-  cssData: penpot.generateStyle(
-    penpot.selection.filter((e) => e.type === "board")
-  ),
+  htmlData: penpot.generateMarkup(getSelectedBoards()),
+  cssData: penpot.generateStyle(getSelectedBoards()),
 });
+
+function getSelectedBoards() {
+  return penpot.selection.filter((shape) => shape.type === "board");
+}

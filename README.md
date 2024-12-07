@@ -1,7 +1,3 @@
-## Penpot Plugin Template
+## 3D Design Viewer
 
-Includes: 
-  - TypeScript
-  - Lit for WebComponents (https://lit.dev/)
-  - Axios
-  - Vite
+#### Penpot plugin to visualize and export your designs in a 3D perspective
