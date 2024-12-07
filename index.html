@@ -6,9 +6,138 @@
     <title>Plugin Template</title>
   </head>
   <body>
-    <example-element></example-element>
+    <div class="wrapper">
+      <div class="main-container">
+        <div id="main" class="main"></div>
+      </div>
+
+      <div>
+        <div class="form-group reset-input-container">
+          <label class="input-label caption" for="dragInput"
+            >Perspective (px)</label
+          >
+          <input
+            class="input draggable"
+            type="number"
+            id="dragInputPerspective"
+            value="1000"
+          />
+          <button
+            data-appearance="secondary"
+            type="button"
+            id="resetButton"
+            class="reset-button"
+          >
+            Reset
+          </button>
+        </div>
+
+        <div class="spacer-8"></div>
+        <div class="form-group reset-input-container">
+          <label class="input-label caption" for="dragInputX">X Axis</label>
+          <input
+            class="input draggable"
+            type="number"
+            id="dragInputX"
+            value="0"
+          />
+          <button
+            data-appearance="secondary"
+            type="button"
+            id="resetButtonX"
+            class="reset-button"
+          >
+            Reset
+          </button>
+        </div>
+        <div class="spacer-8"></div>
+
+        <div class="form-group reset-input-container">
+          <label class="input-label caption" for="dragInputY">Y Axis</label>
+          <input
+            class="input draggable"
+            type="number"
+            id="dragInputY"
+            value="0"
+          />
+          <button
+            data-appearance="secondary"
+            type="button"
+            id="resetButtonY"
+            class="reset-button"
+          >
+            Reset
+          </button>
+        </div>
+        <div class="spacer-8"></div>
+
+        <div class="form-group reset-input-container">
+          <label class="input-label caption" for="dragInputZ">Z Axis</label>
+          <input
+            class="input draggable"
+            type="number"
+            id="dragInputZ"
+            value="0"
+          />
+          <button
+            data-appearance="secondary"
+            type="button"
+            id="resetButtonZ"
+            class="reset-button"
+          >
+            Reset
+          </button>
+        </div>
+        <div class="spacer-8"></div>
+
+        <div class="form-group reset-input-container">
+          <label class="input-label caption" for="dragInputAngle"
+            >Angle (deg)</label
+          >
+          <input
+            class="input draggable"
+            type="number"
+            id="dragInputAngle"
+            value="0"
+          />
+          <button
+            data-appearance="secondary"
+            type="button"
+            id="resetButtonAngle"
+            class="reset-button"
+          >
+            Reset
+          </button>
+        </div>
+        <div class="spacer-8"></div>
+        <div class="spacer-8"></div>
+        <div class="caption">
+          <i>Press Shift when dragging to increment by 10 units</i>
+        </div>
+        <div class="spacer-8"></div>
+        <div class="spacer-8"></div>
+
+        <div class="action-container">
+          <button
+            data-appearance="secondary"
+            type="button"
+            id="resetAll"
+            class=""
+          >
+            Reset All
+          </button>
+          <button
+            data-appearance="primary"
+            type="button"
+            id="addToPenpot"
+            class="add-button"
+          >
+            Add to Penpot
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
-    <script type="module" src="/src/components/example-element.ts"></script>
   </body>
 </html>

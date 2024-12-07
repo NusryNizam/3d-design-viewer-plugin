@@ -7,10 +7,51 @@ body {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   padding: 10px;
-  max-width: 500px;
+  max-width: 1000px;
   margin: auto;
+  margin-top: 1rem;
 }
 
-p {
-  margin-block-end: 0.75rem;
+.draggable {
+  cursor: ew-resize;
+}
+
+.reset-input-container {
+  position: relative;
+}
+
+.reset-button {
+  position: absolute;
+  left: 220px;
+  bottom: 0;
+}
+
+.spacer-8 {
+  height: 8px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.main-container {
+  min-width: 500px;
+  min-height: 500px;
+  border: 2px dashed var(--db-quaternary);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.action-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+input {
+  min-width: 214px;
 }

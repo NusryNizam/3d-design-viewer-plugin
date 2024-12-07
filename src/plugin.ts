@@ -1,6 +1,6 @@
 penpot.ui.open("Plugin Template", `?theme=${penpot.theme}`, {
-  width: 500,
-  height: 500,
+  width: 880,
+  height: 600,
 });
 
 penpot.ui.onMessage<{ type: string; data: any }>((message) => {
@@ -15,5 +15,25 @@ penpot.on("themechange", (theme) => {
     source: "penpot",
     type: "themechange",
     theme,
+  });
+});
+
+penpot.ui.sendMessage({
+  type: "selection",
+  data: penpot.selection.filter((e) => e.type === "board"),
+});
+
+penpot.on("selectionchange", () => {
+  console.log(
+    penpot.generateMarkup(penpot.selection.filter((e) => e.type === "board"))
+  );
+  penpot.ui.sendMessage({
+    type: "selection",
+    htmlData: penpot.generateMarkup(
+      penpot.selection.filter((e) => e.type === "board")
+    ),
+    cssData: penpot.generateStyle(
+      penpot.selection.filter((e) => e.type === "board")
+    ),
   });
 });
