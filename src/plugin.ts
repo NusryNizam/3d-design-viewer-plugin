@@ -1,5 +1,3 @@
-import { Shape } from "@penpot/plugin-types";
-
 penpot.ui.open("3D Design Viewer", `?theme=${penpot.theme}`, {
   width: 880,
   height: 600,
