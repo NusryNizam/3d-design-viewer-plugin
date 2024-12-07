@@ -4,7 +4,8 @@
 
 ![gh](https://github.com/user-attachments/assets/c51581bc-7232-4a8b-8758-fc81b83dc0da)
 
-
+Hosted on Netlify: https://3d-design-viewer.netlify.app/manifest.json
+<br>
 ###### Screenshots 
 
 ![3](https://github.com/user-attachments/assets/8764506b-6f55-409a-a7d2-508025d59bbf)
