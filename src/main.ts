@@ -1,24 +1,63 @@
 import { DragInput } from "./DragInput";
 import "./style.css";
 
+import { toPixelData, toBlob } from "html-to-image";
+
 // get the current theme from the URL
 const searchParams = new URLSearchParams(window.location.search);
 document.body.dataset.theme = searchParams.get("theme") ?? "light";
 
+const mainWrapperEl = document.querySelector(".main-wrapper") as HTMLDivElement;
 const mainContainerEl = document.querySelector(
   ".main-container"
 ) as HTMLDivElement;
 const mainEl = document.querySelector(".main") as HTMLDivElement;
+const addToPenpotButton = document.querySelector(
+  "#addToPenpot"
+) as HTMLButtonElement;
 
-document.querySelector("#addToPenpot")?.addEventListener("click", () => {
+addToPenpotButton.addEventListener("click", async () => {
+  if (mainEl.innerHTML.includes("Select a board to continue")) {
+    console.log("Empty");
+    return;
+  }
+
+  addToPenpotButton.disabled = true;
+  addToPenpotButton.innerHTML = `<div class="loader center " id="loader"></div>`;
+
+  const imageData = await getImage();
+
+  console.log("----------------------");
+  console.log(imageData);
   // send message to plugin.ts
   parent.postMessage(
     {
       type: "add",
+      data: imageData,
     },
     "*"
   );
 });
+
+async function getImage() {
+  // const data = await toPixelData(mainWrapperEl);
+
+  // if (data instanceof Uint8ClampedArray) {
+  //   const imageData = new Uint8Array(data);
+  //   return imageData;
+  // }
+  const transformedMainWrapper = mainWrapperEl;
+  transformedMainWrapper.style.border = "none";
+
+  const data = await toBlob(transformedMainWrapper);
+
+  if (data) {
+    const buffer = await data.arrayBuffer();
+    return new Uint8Array(buffer);
+  }
+
+  console.log("Error: Couldn't get image");
+}
 
 // Listen plugin.ts messages
 window.addEventListener("message", (event) => {
@@ -27,10 +66,19 @@ window.addEventListener("message", (event) => {
   }
 
   if (event.data.type === "selection") {
+    if (!event.data.htmlData) {
+      resetAll();
+    }
+
     mainEl.innerHTML = event.data.htmlData
       ? event.data.htmlData
       : `<p class="caption">Select a board to continue</p>`;
     updateStyles(event.data.cssData);
+  }
+
+  if (event.data.type === "added") {
+    addToPenpotButton.disabled = false;
+    addToPenpotButton.innerHTML = "Add to Penpot";
   }
 });
 
@@ -172,14 +220,17 @@ resetButtonAngle.addEventListener("click", () => {
 });
 
 resetAllButton.addEventListener("click", () => {
+  resetAll();
+});
+
+function handlePerspectiveChange(value: number) {
+  mainContainerEl.style.perspective = value.toString() + "px";
+}
+
+function resetAll() {
   dragInputPerspective.reset();
   dragInputX.reset();
   dragInputY.reset();
   dragInputZ.reset();
   dragInputAngle.reset();
-});
-
-function handlePerspectiveChange(value: number) {
-  console.log("VVV: ", value);
-  mainContainerEl.style.perspective = value.toString() + "px";
 }

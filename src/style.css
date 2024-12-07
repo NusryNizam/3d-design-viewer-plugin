@@ -36,14 +36,15 @@ body {
   gap: 2rem;
 }
 
-.main-container {
-  min-width: 500px;
-  min-height: 500px;
-  border: 2px dashed var(--db-quaternary);
+.main-wrapper {
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  border: 1px dashed var(--db-quaternary);
   border-radius: 8px;
   display: grid;
   place-items: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .action-container {
@@ -54,4 +55,45 @@ body {
 
 input {
   min-width: 214px;
+}
+
+/* loader styles */
+
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border-top: 2px solid transparent;
+
+  animation: loading 1s infinite linear;
+}
+
+body[data-theme="dark"] .loader {
+  border-right: 2px solid var(--df-secondary);
+  border-left: 2px solid var(--df-secondary);
+  border-bottom: 2px solid var(--df-secondary);
+}
+
+body[data-theme="light"] .loader {
+  border-right: 2px solid var(--lf-secondary);
+  border-left: 2px solid var(--lf-secondary);
+  border-bottom: 2px solid var(--lf-secondary);
+}
+
+.hide {
+  display: none;
+}
+
+.center {
+  margin: auto;
+}
+
+@keyframes loading {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
 }
